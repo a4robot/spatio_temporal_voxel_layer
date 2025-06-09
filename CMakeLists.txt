@@ -39,7 +39,7 @@ generate_messages(
    dynamic_reconfigure
 )
 
-find_package(PCL REQUIRED)
+find_package( PCL 1.14 PATHS $ENV{PCL_FOLDER} REQUIRED NO_DEFAULT_PATH)
 if(NOT "${PCL_LIBRARIES}" STREQUAL "")
   # This package fails to build on Debian Stretch with a linking error against
   # 'Qt5::Widgets'.  This is a transitive dependency that comes in to PCL via
