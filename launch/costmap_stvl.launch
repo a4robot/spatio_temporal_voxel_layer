@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="respawn" default="false"/>
+    <arg name="respawn_delay" default="10"/>
+
+    <arg name="namespace" default="$(env A4_ROBOT_NAME)"/>
+    <arg name="node_name" default="costmap_stvl"/>
+
+    <!-- <rosparam file="$(find spatio_temporal_voxel_layer)/example/$(env A4_ROBOT_NAME).yaml"
+        command="load"
+        ns="$(arg namespace)"
+    /> -->
+
+    <node pkg="costmap_2d" type="costmap_2d_node" output="screen"
+        name="$(arg node_name)" ns="$(arg namespace)"
+        respawn="$(arg respawn)" respawn_delay="$(arg respawn_delay)"
+    >
+        <rosparam file="$(find spatio_temporal_voxel_layer)/example/$(env A4_ROBOT_NAME).yaml"
+            command="load"
+        />
+    </node>
+</launch>
